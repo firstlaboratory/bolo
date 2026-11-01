@@ -9,6 +9,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
@@ -146,6 +147,7 @@ main{padding-block:14px 32px}
 <script>
 const LANGS=[
  {k:"hi",name:"हिन्दी",en:"Hindi",tts:"hi-IN",where:"Delhi, Uttar Pradesh, Uttarakhand, Himachal, Rajasthan, MP, Bihar, Jharkhand, Haryana, Chhattisgarh. Also understood in most cities."},
+ {k:"ta",name:"தமிழ்",en:"Tamil",tts:"ta-IN",where:"Tamil Nadu (Chennai, Madurai, Coimbatore, Ooty), Puducherry"},
  {k:"kn",name:"ಕನ್ನಡ",en:"Kannada",tts:"kn-IN",where:"Karnataka (Bengaluru, Mysuru, Coorg, Hampi)"},
  {k:"te",name:"తెలుగు",en:"Telugu",tts:"te-IN",where:"Andhra Pradesh, Telangana (Hyderabad, Tirupati, Vizag)"},
  {k:"ml",name:"മലയാളം",en:"Malayalam",tts:"ml-IN",where:"Kerala (Kochi, Munnar, Alleppey, Trivandrum)"},
@@ -205,8 +207,53 @@ const P=[
 ["sos","Where is the hospital?","अस्पताल कहाँ है?","aspataal kahaan hai?","ಆಸ್ಪತ್ರೆ ಎಲ್ಲಿದೆ?","aaspatre ellide?","హాస్పిటల్ ఎక్కడ ఉంది?","hospital ekkada undi?","ആശുപത്രി എവിടെയാണ്?","aashupathri evideyaanu?","दवाखाना कुठे आहे?","davaakhaana kuthe aahe?","হাসপাতাল কোথায়?","haspatal kothay?"],
 ["sos","I am lost","मैं रास्ता भूल गया हूँ","main raasta bhool gaya hoon","ನಾನು ದಾರಿ ತಪ್ಪಿದ್ದೇನೆ","naanu daari tappiddene","నేను దారి తప్పిపోయాను","nenu daari tappipoyaanu","എനിക്ക് വഴി തെറ്റി","enikku vazhi thetti","मी रस्ता चुकलो आहे","mi rasta chuklo aahe","আমি রাস্তা হারিয়ে ফেলেছি","ami rasta hariye phelechhi"]
 ];
+const TA={
+"Hello":["வணக்கம்","vanakkam"],
+"Thank you":["நன்றி","nandri"],
+"Yes":["ஆமாம்","aamaam"],
+"No":["இல்லை","illai"],
+"Sorry / Excuse me":["மன்னிக்கவும்","mannikkavum"],
+"I don't understand":["எனக்குப் புரியவில்லை","enakku puriyavillai"],
+"Do you speak English?":["உங்களுக்கு ஆங்கிலம் தெரியுமா?","ungalukku aangilam theriyumaa?"],
+"Please speak slowly":["தயவுசெய்து மெதுவாகப் பேசுங்கள்","thayavuseithu methuvaaga pesungal"],
+"Please take me to this address":["இந்த முகவரிக்குக் கொண்டு செல்லுங்கள்","indha mugavarikku kondu sellungal"],
+"How much to go there?":["அங்கே போக எவ்வளவு?","ange poga evvalavu?"],
+"Too expensive, please reduce":["ரொம்ப அதிகம், கொஞ்சம் குறைங்க","romba adhigam, konjam kuraiynga"],
+"Please use the meter":["மீட்டர் போடுங்க","meter podunga"],
+"Stop here":["இங்கே நிறுத்துங்க","inge niruthunga"],
+"Go straight":["நேராப் போங்க","neraa ponga"],
+"Turn left":["இடது பக்கம் திரும்புங்க","idadhu pakkam thirumbunga"],
+"Turn right":["வலது பக்கம் திரும்புங்க","valadhu pakkam thirumbunga"],
+"Is this vegetarian?":["இது சைவமா?","idhu saivamaa?"],
+"Less spicy, please":["காரம் கம்மியா போடுங்க","kaaram kammiyaa podunga"],
+"Drinking water, please":["குடிக்கத் தண்ணீர் கொடுங்க","kudikka thanneer kodunga"],
+"The bill, please":["பில் கொடுங்க","bill kodunga"],
+"Very tasty!":["ரொம்ப ருசியா இருக்கு!","romba rusiyaa irukku!"],
+"Is a room available?":["ரூம் கிடைக்குமா?","room kidaikkumaa?"],
+"How much for one night?":["ஒரு ராத்திரிக்கு எவ்வளவு?","oru raathirikku evvalavu?"],
+"Is there hot water?":["சுடு தண்ணீர் இருக்கா?","sudu thanneer irukkaa?"],
+"What time is checkout?":["செக்அவுட் எத்தனை மணிக்கு?","checkout ethanai manikku?"],
+"Where is the toilet?":["டாய்லெட் எங்கே இருக்கு?","toilet enge irukku?"],
+"Where is the railway station?":["ரயில்வே ஸ்டேஷன் எங்கே இருக்கு?","railway station enge irukku?"],
+"Where is the bus stand?":["பஸ் ஸ்டாண்ட் எங்கே இருக்கு?","bus stand enge irukku?"],
+"How far is it?":["எவ்வளவு தூரம்?","evvalavu dhooram?"],
+"How much is this?":["இது எவ்வளவு?","idhu evvalavu?"],
+"Can I pay by UPI?":["UPI-ல கொடுக்கலாமா?","UPI-la kodukkalaamaa?"],
+"₹10":["பத்து","patthu"],
+"₹20":["இருபது","irubadhu"],
+"₹50":["ஐம்பது","aimbadhu"],
+"₹100":["நூறு","nooru"],
+"₹200":["இருநூறு","irunooru"],
+"₹500":["ஐநூறு","ainooru"],
+"Help!":["உதவி செய்யுங்க!","udhavi seyyunga!"],
+"I need a doctor":["எனக்கு டாக்டர் வேணும்","enakku doctor venum"],
+"Please call the police":["போலீஸைக் கூப்பிடுங்க","police-ai koopidunga"],
+"Where is the hospital?":["ஆஸ்பத்திரி எங்கே இருக்கு?","aaspathiri enge irukku?"],
+"I am lost":["நான் வழி தவறிட்டேன்","naan vazhi thavarittaen"]
+};
+const COLS=["hi","kn","te","ml","mr","bn"];
 const ORDER=LANGS.map(l=>l.k);
-const phrases=P.map((r,i)=>{const t={};ORDER.forEach((k,j)=>t[k]=[r[2+j*2],r[3+j*2]]);return{id:i,cat:r[0],en:r[1],t}});
+const phrases=P.map((r,i)=>{const t={};COLS.forEach((k,j)=>t[k]=[r[2+j*2],r[3+j*2]]);t.ta=TA[r[1]];return{id:i,cat:r[0],en:r[1],t}});
 
 const store={get(k,d){try{const v=localStorage.getItem("bolo."+k);return v==null?d:JSON.parse(v)}catch(e){return d}},
   set(k,v){try{localStorage.setItem("bolo."+k,JSON.stringify(v))}catch(e){}}};
